@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GA4 Test Site</title>
+
+  <!-- Google tag (gtag.js) -->
+  <!-- G-XXXXXXXXXX を自分の GA4 測定 ID に置き換える -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+  <main>
+    <h1>GA4 Test Site</h1>
+    <p>Google Analytics 4 と Google Analytics Data API の検証用サイトです。</p>
+
+    <nav>
+      <a href="./">Home</a>
+      <a href="./?page=about">About</a>
+      <a href="./?page=pricing">Pricing</a>
+    </nav>
+
+    <section>
+      <h2>Test Actions</h2>
+      <button id="signupButton">Sign up click</button>
+      <button id="downloadButton">Download click</button>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('signupButton').addEventListener('click', function () {
+      gtag('event', 'signup_click', {
+        event_category: 'engagement',
+        event_label: 'top_signup_button'
+      });
+      alert('signup_click event sent');
+    });
+
+    document.getElementById('downloadButton').addEventListener('click', function () {
+      gtag('event', 'download_click', {
+        event_category: 'engagement',
+        event_label: 'dummy_download_button'
+      });
+      alert('download_click event sent');
+    });
+  </script>
+</body>
+</html>
